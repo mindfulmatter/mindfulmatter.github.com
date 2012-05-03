@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  
+  <title> 
+     Coding with Khan |  
+    mindfulmatter
+  </title>
+  
+  <link rel="stylesheet" href="/inc/style.css" />
+  <link rel="stylesheet" href="/inc/code.css" />
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30419665-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+ 
+<div id="container">
+
+<div id="header">
+  <div style="font-size: 2em">mindfulmatter</div>
+      <a href="/index.html">Home</a>
+</div>
+
+<div id="content">
+  <h1>Coding with Khan</h1>
+   
+
+  <h2 id='a_better_way_to_learn_math'>A better way to learn math?</h2>
+
+<p>Here&#8217;s a neat way of using Khan Academy that I&#8217;ve been messing around with to re-learn math and find some interesting programming exercises.</p>
+
+<h2 id='the_basic_idea'>The Basic Idea</h2>
+
+<p>For the simplest exercise, you can use <a href='http://www.khanacademy.org/exercisedashboard'>their practice area</a> as a kind of interactive <a href='http://www.projecteuler.net'>Project Euler</a>.</p>
+
+<h3 id='example'>Example</h3>
+
+<p>Finding the greatest common divisor. In this Khan Academy exercise, the user is presented with two numbers and asked to produce the greatest common divisor. Instead of watching the <a href='http://www.khanacademy.org/math/arithmetic/factors-multiples/v/greatest-common-divisor'>video lecture</a> and solving the series of exercises I created a Python program that tries to follow the algorithm Mr. Khan describes in the youtube video.</p>
+
+<p>I came up with this solution, which is actually pretty simple in that it only involves a few of the main concepts from programming.</p>
+<div class='highlight'><pre><code class='python'><span class='k'>def</span> <span class='nf'>gcf</span><span class='p'>(</span><span class='n'>numOne</span><span class='p'>,</span> <span class='n'>numTwo</span><span class='p'>):</span>
+	<span class='n'>numOneFactors</span> <span class='o'>=</span> <span class='n'>factors</span><span class='p'>(</span><span class='n'>numOne</span><span class='p'>)</span>
+	<span class='n'>numTwoFactors</span> <span class='o'>=</span> <span class='n'>factors</span><span class='p'>(</span><span class='n'>numTwo</span><span class='p'>)</span>
+
+	<span class='k'>for</span> <span class='n'>num</span> <span class='ow'>in</span> <span class='n'>numOneFactors</span><span class='p'>:</span>
+		<span class='k'>if</span> <span class='n'>num</span> <span class='ow'>in</span> <span class='n'>numTwoFactors</span><span class='p'>:</span>
+			<span class='k'>return</span> <span class='n'>num</span>
+
+<span class='k'>def</span> <span class='nf'>factors</span><span class='p'>(</span><span class='n'>number</span><span class='p'>):</span>
+	<span class='n'>factorsList</span> <span class='o'>=</span> <span class='p'>[]</span>
+	<span class='n'>counter</span> <span class='o'>=</span> <span class='mi'>1</span>
+
+	<span class='k'>while</span> <span class='n'>counter</span> <span class='o'>&lt;=</span> <span class='n'>number</span><span class='p'>:</span>
+		<span class='k'>if</span> <span class='n'>number</span> <span class='o'>%</span> <span class='n'>counter</span> <span class='o'>==</span> <span class='mi'>0</span><span class='p'>:</span>
+			<span class='n'>factorsList</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>counter</span><span class='p'>)</span>
+		<span class='n'>counter</span> <span class='o'>+=</span> <span class='mi'>1</span>
+
+	<span class='c'>#Return the list of factors in reverse</span>
+	<span class='k'>return</span> <span class='n'>factorsList</span><span class='p'>[::</span><span class='o'>-</span><span class='mi'>1</span><span class='p'>]</span>
+
+<span class='n'>numOne</span> <span class='o'>=</span> <span class='mi'>12</span>
+<span class='n'>numTwo</span> <span class='o'>=</span> <span class='mi'>8</span>
+
+<span class='k'>print</span> <span class='n'>gcf</span><span class='p'>(</span><span class='n'>numOne</span><span class='p'>,</span> <span class='n'>numTwo</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>I&#8217;m not a good programmer, but even I know there&#8217;s a lot to be desired with this code. Maybe that&#8217;s a good thing, as there are some pretty simple scenarios that break it. What if you want to get the GCF of 3 numbers? What if a negative number is entered? That being said, it&#8217;s enough to get through the practice session for greatest common factors&#8211;a great way of testing the script.</p>
+
+<h2 id='its_more_fun_than_math_class'>It&#8217;s more fun than math class</h2>
+
+<p>This is just a baby of an idea, but I jumped at how much more excited it made me in comparison to over a decade sitting in a traditional classroom trying to memorize this stuff.</p>
+
+<p>Some other ideas that I plan on looking into:</p>
+
+<ul>
+<li>Using processing.js to do drawing for geometry and trigonometry purposes</li>
+
+<li>Some way of &#8216;programming algebra&#8217; &#8211; user enters two polynomals to multiply, simplified product is returned. Doing this without a lot of parser code may be tough.</li>
+
+<li>The above exercise works better for some topics than others. Dividing two numbers is as easy as entering &#8216;238599573949 / 98593830&#8217;. Creating visualizations of different division algorithms is more difficult than using the computer as a calculator, but provides an excellent way of digesting how computation by hand actually works.</li>
+</ul>
+
+<hr color="#000">
+
+If you spot an error, please let me know. The primary purpose of this site is for my own continued education, any benefit to you the visitor is purely accidental. 
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'mindfulmatter'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+ 
+<div id="footer">
+  This work is licensed under a <br/> 
+
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br /><br/>
+
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+</div>
+ 
+</div>
+</body>
+</html>
